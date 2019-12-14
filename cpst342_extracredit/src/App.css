@@ -13,6 +13,16 @@
   }
 }
 
+label{
+  text-align: left;
+}
+h3,p,label{
+  color: white;
+}
+
+a:hover{
+  background-color: lightgreen;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

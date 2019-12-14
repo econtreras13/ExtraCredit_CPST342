@@ -1,20 +1,56 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button} from 'reactstrap';
+import { Jumbotron} from 'reactstrap';
+import {Link, BrowserRouter as Router, Route, Switch, useRouteMatch} from 'react-router-dom';
+import './'
+import Subscribe from './Subscribe';
+import Home from './Home';
 
 function App() {
   return (
+    <div className="App">
    <Navbar/>
-  );
-}
+   <Body/>
+   </div>
+  )
+};
+
+
+class Body extends Component {
+
+
+  render(){
+    return (
+      <Jumbotron style={{backgroundColor: "purple"}}>
+      <div className="bodyContent">
+        
+
+        <Router>
+         <Switch>
+           <Route exact path="/">
+             <Home/>
+           </Route>
+           <Route exact path="/Subscribe">
+             <SubscribePage/>
+           </Route>
+          <Route exact path="/">
+            
+          </Route>
+         </Switch>
+         </Router>
+  </div>
+  </Jumbotron>
+    )
+  }
+};
 
 class Navbar extends Component {
   render(){
     return (
+     
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <a className="navbar-brand" href="#">Choco-Mania</a>
+    <a className="navbar-brand" href="/">Choco-Mania</a>
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -22,18 +58,37 @@ class Navbar extends Component {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active">
-          <a className="nav-link" href="#">Art <span className="sr-only">(current)</span></a>
+        <a className="nav-link" href="/Home">Art</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Sciences</a>
+          <a className="nav-link" href="/Sciences">Sciences</a>
         </li>
       </ul>
-      <form className="form-inline my-2 my-lg-0">
-        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
+      <a href="/Subscribe">Like us? Subscribe!</a>
+      </div>
+    
   </nav>
     )}
 }
+
+function SubscribePage() {
+  return (
+    <Subscribe/>
+  );
+}
+
+function MenuItem({ label, to, activeOnlyWhenExact }) {
+  let match = useRouteMatch({
+    path: to,
+    exact: activeOnlyWhenExact
+  });
+
+  return (
+    <div className={match ? "active" : ""}>
+      {match && "> "}
+      <Link to={to}>{label}</Link>
+    </div>
+  );
+}
+
 export default App;
