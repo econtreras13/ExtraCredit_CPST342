@@ -6,6 +6,9 @@ import {Link, BrowserRouter as Router, Route, Switch, useRouteMatch} from 'react
 import './'
 import Subscribe from './Subscribe';
 import Home from './Home';
+import Slideshow from './Slideshow';
+import Sciences from './Sciences';
+import Art from './Art';
 
 function App() {
   return (
@@ -22,7 +25,7 @@ class Body extends Component {
 
   render(){
     return (
-      <Jumbotron style={{backgroundColor: "purple"}}>
+      
       <div className="bodyContent">
         
 
@@ -34,13 +37,15 @@ class Body extends Component {
            <Route exact path="/Subscribe">
              <SubscribePage/>
            </Route>
-          <Route exact path="/">
-            
+          <Route exact path="/Art">
+            <Art />
+          </Route>
+          <Route exact path="/Sciences">
+            <Sciences/>
           </Route>
          </Switch>
          </Router>
   </div>
-  </Jumbotron>
     )
   }
 };
@@ -58,7 +63,7 @@ class Navbar extends Component {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav mr-auto">
         <li className="nav-item active">
-        <a className="nav-link" href="/Home">Art</a>
+        <a className="nav-link" href="/Art">Art</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/Sciences">Sciences</a>

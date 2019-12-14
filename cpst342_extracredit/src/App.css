@@ -7,10 +7,23 @@
   pointer-events: none;
 }
 
+.spacing{
+  margin-top:10%
+}
+
+.form-group > label{
+  color: black;
+  text-align:  left;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+h5{
+  text-align: left;
 }
 
 label{
